@@ -1,0 +1,10 @@
+
+GET http://localhost:5000/api/v1/homelib/
+Content-Type: application/json
+
+{
+    "title": "Harry Potter"
+}
+
+# wiersz 2,3  -  służy wyłacznie do przetesowania metody
+# wiersz 5-7 - sposób na dodawanie elementu do mojego pliku json

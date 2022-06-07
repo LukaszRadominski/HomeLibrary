@@ -1,14 +1,22 @@
 from flask_wtf import FlaskForm             
-from wtforms import StringField, BooleanField, TextAreaField  
+from wtforms import StringField, BooleanField, TextAreaField, IntegerField  
 from wtforms.validators import DataRequired 
 
 
 
 class HomelibraryForm(FlaskForm):  
-    checkbox = BooleanField('Czy przeczytałeś?', validators=[DataRequired()])
+    done = BooleanField('Czy przeczytałeś?', validators=[DataRequired()])
     title    = StringField('Podaj tytuł książki', validators=[DataRequired()])
     description = TextAreaField('Streść książkę', validators=[DataRequired()])
+    # id = IntegerField('Podaj id', validators=[DataRequired()]) - TU NIC NIE TRZEBA DODAWAĆ - UZGODNIONE Z MENTOREM
 
+  
+
+
+#TodoForm > HomelibraryForm
+# todos > homelib
+# todo > homelibrary
+# Todos > Homelib
 
  
     
