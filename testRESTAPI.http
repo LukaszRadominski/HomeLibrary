@@ -8,3 +8,29 @@ Content-Type: application/json
 
 # wiersz 2,3  -  służy wyłacznie do przetesowania metody
 # wiersz 5-7 - sposób na dodawanie elementu do mojego pliku json
+
+
+# Przykłady:
+
+
+# 1: GET Wyświetlanie - działa na Update ID 
+# GET http://localhost:5000/api/v1/homelib/
+# Content-Type: application/json
+
+# 2: GET ID Wyświetlanie eg nr ID - działa na Update ID - dla 1 wyświetna element nr 2 
+# GET http://localhost:5000/api/v1/homelib/1
+# Content-Type: application/json
+
+
+
+# 3: POST http://localhost:5000/api/v1/todos/
+#Content-Type: application/json
+
+#{
+#  "title": "Poćwicz"
+#}
+
+# 4: DELETE http://localhost:5000/api/v1/todos/5
+
+# 5: PUT http://localhost:5000/api/v1/todos/5
+

@@ -8,7 +8,7 @@ class HomelibraryForm(FlaskForm):
     done = BooleanField('Czy przeczytałeś?', validators=[DataRequired()])
     title    = StringField('Podaj tytuł książki', validators=[DataRequired()])
     description = TextAreaField('Streść książkę', validators=[DataRequired()])
-    # id = IntegerField('Podaj id', validators=[DataRequired()]) - TU NIC NIE TRZEBA DODAWAĆ - UZGODNIONE Z MENTOREM
+    
 
   
 

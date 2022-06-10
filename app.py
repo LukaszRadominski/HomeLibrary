@@ -53,7 +53,7 @@ def not_found(error):
 
 ## #2 - końcówka  - funkcja do  dodawania nowego elementu homelibrary  - POST
 
-## UZGODNIONE Z MENTOREM -  NIE TRZEBA : czy w związku z nowym elementem 'id' - nie należy także dokonac modyfikacji w "forms.py" - test API , gdy wybieram metodę inną niż GET - bez podawania id nie powiodło się
+
 
 @app.route("/api/v1/homelib/", methods=["POST"]) 
 def create_homelibrary():
@@ -120,4 +120,3 @@ if __name__ == "__main__":
 # todos > homelib
 # todo > homelibrary
 # Todos > Homelib
- 
