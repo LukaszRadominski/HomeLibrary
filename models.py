@@ -1,17 +1,17 @@
 import json
+from flask import make_response, jsonify
 
 
 # PRÓBA 1:  co jest w homelib?
 
-with open("homelib.json", "r") as f:  
-   homelib = json.loads(f)
-   print(type(homelib)) 
-   print(homelib)
+#with open("./homelib.json", "r") as f:  
+#   homelib = json.loads(f)
+#   print(type(homelib)) 
+#   print(homelib)
 
 # WYNIK:
 ## with open("homelib.json", "r") as f:
 ## FileNotFoundError: [Errno 2] No such file or directory: 'homelib.json'
-
 
 # PRÓBA 2:  co jest w homelib? 
 # with open("homelib.json", "r") as f:  
@@ -24,7 +24,6 @@ with open("homelib.json", "r") as f:
 ## with open("homelib.json", "r") as f:
 ## FileNotFoundError: [Errno 2] No such file or directory: 'homelib.json'
 
-
 # PRÓBA 3: tylko utworzenie nowego elementu: 
 #with open("homelib.json", "r") as f:  
 #    homelib = json.load(f)
@@ -32,45 +31,65 @@ with open("homelib.json", "r") as f:
 #        homelib["id"]=1
 #        print(homelib)
 
+# WYNIK:
+## with open("homelib.json", "r") as f:
+## FileNotFoundError: [Errno 2] No such file or directory: 'homelib.json'
+
+# PRÓBA 4:  ..... 
+#with open("./homelib.json", "r") as f:  
+# ....
+
+# WYNIK:
+## with open("homelib.json", "r") as f:
+## FileNotFoundError: [Errno 2] No such file or directory: './homelib.json'
+
+#LOOP
+# for index in range(len(self.homelib)):
+#    self.homelib[index]['id'] = index
+
+###     for key in self.homelib[index]:
+###     print(self.homelib[index][key])  
+
+
+
 class Homelib:                                      
     def __init__(self):
         try:
             with open("homelib.json", "r") as f:  
-                self.homelib = json.loads(f)
+                self.homelib = json.load(f)
                 for index in range(len(self.homelib)):
-                    for key in self.homelib[index]:
-                        print(self.homelib[index][key])     
+                    self.homelib[index]['id'] = index       
         except FileNotFoundError:
-            self.homelib = []             
-           
+            self.homelib = []                     
 
-
-########## PODPOIWEDź: dla każdego odczytanego elementu dodac id - pętla for - popcząwszy od 0  -- od wiersza po 8 lub 11 
-
+########## dla każdego odczytanego elementu dodac id - pętla for - popcząwszy od 0  -- od wiersza po 8 lub 11 
 
 
     def all(self): 
         return self.homelib                       
 
     def get(self, id):  
-        #return self.homelib[id]
-        #poniższe zaprojektowane było wg zasad REST - w projekcie ToDo- niemniej wyłączenie poniższego spowodowało że aplikacja działapoprawnie 
-        homelibrary = [homelibrary for homelibrary in self.all() if homelibrary['id'] == id] # MODYFIKACJA #1  metody get bo: chcemy pobierać obiekt na podstawie zapisanego id. Może się zdarzyć, że to id nie będzie w naszej liście, stąd dodatkowy if.
-        if homelibrary:
-            return homelibrary[0]
-        return []                   
+        if id not in self.homelib:
+            response=jsonify({'error': 'Not found', 'status_code': 404})
+            response.status_code=404
+            return response ####### jeżeli jest OK to ma pokazać FALSE - jak nie to ma pokazać TRUE 
+        return self.homelib[id] , ####### jeżeli jest OK to ma pokazać TRUE - jak nie to ma pokazać fałsz 
+        ## PRÓBA MENT 1: homelibrary = [homelibrary for homelibrary in self.all() if homelibrary['id'] == id] # MODYFIKACJA #1  metody get bo: chcemy pobierać obiekt na podstawie zapisanego id. Może się zdarzyć, że to id nie będzie w naszej liście, stąd dodatkowy if.
+        #if homelibrary:
+        #    return homelibrary[0]
+        #return []                   
 
- 
+    ## dlaczego w metodzie poniżej usuwamy data.pop- tak jak w przykładzie moduł 7.4 - JEST OK - UZGODNIONE Z MENTOREM 
     def create(self, data): 
-        data.pop('csrf_token')   
+        # data.pop('csrf_token')   ## PRÓBA MENT 1 - MA   TO USUNĄĆ :
         self.homelib.append(data)
-        self.save_all()                  
+        # ## PRÓBA MENT 1:self.save_all()                  
 
     def save_all(self): 
         with open("homelib.json", "w") as f:       
             json.dump(self.homelib, f)              
 
-    # poniższe działało w wersji pierwotnej - przed REST-API
+    # poniższe działano w wersji pierwotnej - przed REST-API
     #def update(self, id, data): 
     #    data.pop('csrf_token')
     #    self.homelib[id] = data                        

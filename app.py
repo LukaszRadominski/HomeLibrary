@@ -41,10 +41,11 @@ def homelib_list_api_v1():
 ## #1: końcówka  - funkcja do pobierania  danych wg ID - GET
 @app.route("/api/v1/homelib/<int:homelibrary_id>", methods=["GET"]) 
 def get_homelibrary(homelibrary_id):
-    homelibrary = homelib.get(homelibrary_id)
-    if not homelibrary:    
-        abort(404)   
-    return jsonify({"homelibrary": homelibrary})
+    return homelib.get(homelibrary_id)
+    #homelibrary = homelib.get(homelibrary_id)
+    #if not homelibrary:    
+    #    abort(404)   
+    # return homelibrary # jsonify({"homelibrary": homelibrary})
 
 
 @app.errorhandler(404)  
@@ -53,7 +54,7 @@ def not_found(error):
 
 ## #2 - końcówka  - funkcja do  dodawania nowego elementu homelibrary  - POST
 
-
+## UZGODNIONE Z MENTOREM -  NIE TRZEBA : czy w związku z nowym elementem 'id' - nie należy także dokonac modyfikacji w "forms.py" - test API , gdy wybieram metodę inną niż GET - bez podawania id nie powiodło się
 
 @app.route("/api/v1/homelib/", methods=["POST"]) 
 def create_homelibrary():

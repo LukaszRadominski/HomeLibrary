@@ -1,5 +1,5 @@
 
-GET http://localhost:5000/api/v1/homelib/
+PUT http://localhost:5000/api/v1/homelib/3
 Content-Type: application/json
 
 {
