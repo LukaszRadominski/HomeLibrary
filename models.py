@@ -3,7 +3,9 @@ class Homelib:
     def __init__(self):
         try:
             with open("homelib.json", "r") as f:  
-                self.homelib = json.load(f)       
+                self.homelib = json.load(f)
+                for index in range(len(self.homelib)):
+                    self.homelib[index]['id'] = index       
         except FileNotFoundError:
             self.homelib = []                     
 
@@ -22,7 +24,7 @@ class Homelib:
 
     ## dlaczego w metodzie poniżej usuwamy data.pop- tak jak w przykładzie moduł 7.4 - JEST OK - UZGODNIONE Z MENTOREM 
     def create(self, data): 
-        data.pop('csrf_token')   ## PRÓBA MENT 1 - MA   TO USUNĄĆ :
+        # data.pop('csrf_token')   ## PRÓBA MENT 1 - MA   TO USUNĄĆ :
         self.homelib.append(data)
         # ## PRÓBA MENT 1:self.save_all()                  
 
