@@ -16,7 +16,6 @@ def homelib_list():
             homelib.create(form.data)                 
             homelib.save_all()                        
         return redirect(url_for("homelib_list"))       
-
     return render_template("homelib.html", form=form, homelib=homelib.all(), error=error)    
     
 
@@ -24,8 +23,7 @@ def homelib_list():
 def homelibrary_details(homelibrary_id):                            
     homelibrary = homelib.get(homelibrary_id - 1)
     form = HomelibraryForm(data=homelibrary)         
-
-    if request.method == "POST":
+    if request.method == "POST":   
         if form.validate_on_submit():
             homelib.update(homelibrary_id - 1, form.data)       
         return redirect(url_for("homelib_list"))        
@@ -41,11 +39,10 @@ def homelib_list_api_v1():
 ## #1: końcówka  - funkcja do pobierania  danych wg ID - GET
 @app.route("/api/v1/homelib/<int:homelibrary_id>", methods=["GET"]) 
 def get_homelibrary(homelibrary_id):
-    return homelib.get(homelibrary_id)
-    #homelibrary = homelib.get(homelibrary_id)
-    #if not homelibrary:    
-    #    abort(404)   
-    # return homelibrary # jsonify({"homelibrary": homelibrary})
+    homelibrary = homelib.get(homelibrary_id)
+    if not homelibrary:    
+        abort(404)   
+    return jsonify({"homelibrary": homelibrary})
 
 
 @app.errorhandler(404)  
