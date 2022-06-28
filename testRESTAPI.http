@@ -1,9 +1,9 @@
 
-GET http://localhost:5000/api/v1/homelib/
+GET http://localhost:5000/api/v1/homelib/4
 Content-Type: application/json
 
 {
-    "title": "Harry Potter"
+    "title": "HarrRRRRRRRRRRry Potter"
 }
 
 # wiersz 2,3  -  służy wyłacznie do przetesowania metody
@@ -16,13 +16,13 @@ Content-Type: application/json
 
 # 1: GET Wyświetlanie - działa na Update ID 
 # GET http://localhost:5000/api/v1/homelib/
-# Content-Type: application/json
+
 
 
 
 # 2: GET ID Wyświetlanie eg nr ID - działa na Update ID - dla 1 wyświetna element nr 2 
 # GET http://localhost:5000/api/v1/homelib/1
-# Content-Type: application/json
+
 
 
 
