@@ -1,9 +1,9 @@
 
-GET http://localhost:5000/api/v1/homelib/4
+PUT http://localhost:5000/api/v1/homelib/3
 Content-Type: application/json
 
 {
-    "title": "HarrRRRRRRRRRRry Potter"
+    "title": "Książka 444444"
 }
 
 # wiersz 2,3  -  służy wyłacznie do przetesowania metody
@@ -26,7 +26,7 @@ Content-Type: application/json
 
 
 
-# 3: POST http://localhost:5000/api/v1/todos/
+# 3: POST http://localhost:5000/api/v1/homelib/
 #Content-Type: application/json
 
 #{
@@ -35,9 +35,9 @@ Content-Type: application/json
 
 
 
-# 4: DELETE http://localhost:5000/api/v1/todos/5
+# 4: DELETE http://localhost:5000/api/v1/homrlib/5
 
 
 
-# 5: PUT http://localhost:5000/api/v1/todos/5
+# 5: PUT http://localhost:5000/api/v1/homelib/5
 
